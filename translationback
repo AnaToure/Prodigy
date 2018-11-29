@@ -1,0 +1,35 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+//still working on it
+//algorithm supposed to translate our new masterpiece from the format raymond and michael(let's call it masterpiece) used into the format the csvtomidi expects
+
+int main(file test.txt, D){
+    
+    ofstream file; //open the masterpiece to read it
+    array = file.open(test.txt) //?? is there only an array in our masterpiece text file?
+    
+    nedit newfile myfile.csv; //we want to create a new file. has to be csv!!
+    ifstream newfile; //open this file to modify it
+
+    for (line=0; line<len(array); line +=1){ //iterates over the lists in the big array (do they represent notes played t some tick? what is the inerval exactly?)
+        for (i=0; i<len(line); i+=1) { //iterates over the indices of notes in ascii in the sublists
+            for (j=0; j<len(D); j+=1) { //iterates over all possible notes to find the nb corresponding to the ascii char in the dictionnary D
+                if (D[j] == line[i]){
+                note = j
+                
+                newfile.open ("myfile.csv"); //?? open our new csv file to write on it the line of each note
+                newfile << "0" << ","<< 120*line << ","<< "Note_on_c" <<","<< "0"<<","<< note <<","<< "60" <<","  \n; //is it the way we write csv?
+                // only 1 track for now/to get the time, interval of ticks*position of the sublist/wdc/always 0 for piano/note/always the same velocity, quite monotonic but very convenient
+                //note that we completely remove notew with velocity 0
+                
+                newfile.close();
+                }}}}
+        
+
+    }
+    
+    file.close
+    return 0
+}

@@ -14,24 +14,51 @@
 #include <ofstream>
 
 //to quantify the lost
-//use executables
+//use executables? 
 //create executable taking as an input a midifile
 
 int main() {
-    std::string filename;
+    //std::string filename;
+
+        // Creating an object of CSVWriter
+        CSVReader reader("text1.csv");
+        
+        // Get the data from CSV File
+        std::tuple<std::set<std::string>,std::vector<std::string>> other = reader.getData();
+        std::set<std::string> pitches = std::get<0>(other);
+        std::vector<std::string> notes = std::get<1>(other);
+        std::map<std::string, int> trans = bijection(pitches);
+        std::vector<int> translated = translation(notes, trans);
+        
+        for (std::vector<int>::iterator it = translated.begin() ; it != translated.end(); ++it){
+            std::cout << *it << "   ";
+        }
+        
+        /*for (std::vector<std::string>::iterator it = notes.begin() ; it != notes.end(); ++it){
+         std::cout << *it << "   ";
+         }
+         */
+        /*for (std::set<std::string>::iterator it = pitches.begin() ; it != pitches.end(); ++it){
+         std::cout << *it << "   " << trans[*it] <<std::endl;
+         }*/
+        
+        
+    
+        // Creating an object of CSVWriter
+        CSVWriter writer("text1.txt");
+        
+        // outputting the csv file named, "translated.csv"
+        writer.writeData();
+    
+    
     int count;
     int total;
     
     count = 0;
     total = 0;
-    
-    t0 = midicsv(filename); //csv  ( ./midicsv filename >> test.csv in the terminal )
-    
-    CSVReader main() >> t1("t0.csv"); //txt
-    CSVWriter main() >> t2("t1.txt"); //csv
-    
-    ifstream original("t0");
-    ifstream trans("t2");
+
+    ifstream original("text1.csv");
+    ifstream trans("translated.csv");
     
     string line1;
     string line2;
@@ -41,12 +68,14 @@ int main() {
         
              if line1[5] != line2[5] and line1[6]!= 0 { //to get rid of the pb of note off
             
+           
                  count += 1;
              }
              total += 1;
     
          }}}
     std:: cout >> count >> " similar notes out of" >> total;
+    
     return 0;
     
 }
